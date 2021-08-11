@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  webfrontend:
+    image: ${DOCKER_REGISTRY-}webfrontend
+    build:
+      context: .
+      dockerfile: WebFrontEnd/Dockerfile
+
+  mywebapi:
+    image: ${DOCKER_REGISTRY-}mywebapi
+    build:
+      context: .
+      dockerfile: MyWebApi/Dockerfile
+
+# Adding the following did not make any difference. 
+# Still getting the same error.
+networks:
+  local:
+    driver: bridge
